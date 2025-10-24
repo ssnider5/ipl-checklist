@@ -1,0 +1,64 @@
+#main {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  z-index: 0;
+}
+
+#leftPane {
+  flex: 7; /* 70% width */
+  background-color: #f0f0f0;
+  overflow-x:hidden
+}
+
+#planScroll {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 94vh;
+}
+
+#row {
+  flex: 1;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+}
+
+#rightPane {
+  flex: 3; /* 30% width */
+  background-color: #d0d0d0;
+  display: flex;
+  flex-direction: column;
+}
+
+#TopRightPane {
+  flex: 7; /* 30% width */
+  background-color: #d0d0d0;
+  display: flex;
+  flex-direction: column;
+}
+
+#TopRightScroll {
+  /*overflow-y: auto; */
+  height: 65vh;
+  max-height: 65vh;
+}
+
+#BottomRightPane {
+  flex: 3; /* 30% width */
+  background-color: #c0c0c0;
+}
+
+#BottomRightScroll {
+  overflow-y: auto;
+  height: 23vh;
+  max-height: 23vh;
+}
+
+.my-draggable {
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  background-color: #cca;
+}
