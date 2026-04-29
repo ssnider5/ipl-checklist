@@ -1,0 +1,14 @@
+# AWS deployment artifacts (contain account-specific identifiers / secrets)
+aws-secrets.txt
+aws-resources.txt
+server-taskdef.json
+web-taskdef.json
+
+# Environment files (keep examples, ignore real values)
+*.env
+!*.env.example
+
+# Build outputs / vendored deps
+node_modules/
+.next/
+dist/

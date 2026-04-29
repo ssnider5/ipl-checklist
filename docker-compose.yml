@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ipl
+      POSTGRES_PASSWORD: ipl
+      POSTGRES_DB: ipl
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ipl -d ipl"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  server:
+    build: ./server
+    environment:
+      DATABASE_URL: postgres://ipl:ipl@db:5432/ipl
+      PORT: "4000"
+      CORS_ORIGIN: http://localhost:3000
+    ports:
+      - "4000:4000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build: ./web
+    environment:
+      API_URL: http://server:4000
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+
+volumes:
+  pgdata:
